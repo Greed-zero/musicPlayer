@@ -1,28 +1,79 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-container>
+    <el-header>
+      <top></top>
+    </el-header>
+    <el-main>
+      <home></home>
+    </el-main>
+    <el-footer>
+      <play></play>
+    </el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import home from "@/components/home";
+import play from "@/components/play";
+import top from "@/components/top";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    home,
+    top,
+    play
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.el-header{
+  background-color: #eb4141;
+  color: #333;
+  line-height: 60px;
+  margin: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+}
+.el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
+    display: flex;
+    height: 4vh;
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+.el-main{
+  background-color: #ffffff;
+  height: 100%;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  left: 0;
+  bottom: 60px;
+  overflow: auto;
+}
+.el-container{
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+#app{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>
