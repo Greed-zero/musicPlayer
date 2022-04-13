@@ -1,10 +1,10 @@
 <template>
-$END$
+<div>我是歌手的内容</div>
 </template>
 
 <script>
 export default {
-name: "singer"
+  name: "singer"
 }
 </script>
 

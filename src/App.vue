@@ -51,16 +51,18 @@ export default {
     position: fixed;
     left: 0;
     bottom: 0;
+    min-height: 72px;
   }
 .el-main{
   background-color: #ffffff;
   height: 100%;
-  position: absolute;
-  top: 50px;
+  position: relative;
+  top: 0;
+  margin-top: 50px;
   width: 100%;
   left: 0;
   bottom: 60px;
-  overflow: auto;
+  overflow: scroll;
 }
 .el-container{
   width: 100%;
