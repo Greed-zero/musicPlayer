@@ -3,15 +3,15 @@
 <div class="left" >
   <router-link to="/findMusic">&ensp;发现音乐</router-link>
   <router-link to="/video">&ensp;视频</router-link>
-  <router-link>&ensp;关注</router-link>
-  <router-link>&ensp;直播</router-link>
-  <router-link>&ensp;私人FM</router-link>
-  <router-link>&ensp;我的音乐</router-link>
-  <router-link>&ensp;本地与下载</router-link>
-  <router-link>&ensp;最近播放</router-link>
-  <router-link>&ensp;我的音乐云盘</router-link>
-  <router-link>&ensp;我的播客</router-link>
-  <router-link>&ensp;我的收藏</router-link>
+<!--  <router-link>&ensp;关注</router-link>-->
+<!--  <router-link>&ensp;直播</router-link>-->
+<!--  <router-link>&ensp;私人FM</router-link>-->
+<!--  <router-link>&ensp;我的音乐</router-link>-->
+<!--  <router-link>&ensp;本地与下载</router-link>-->
+<!--  <router-link>&ensp;最近播放</router-link>-->
+<!--  <router-link>&ensp;我的音乐云盘</router-link>-->
+<!--  <router-link>&ensp;我的播客</router-link>-->
+<!--  <router-link>&ensp;我的收藏</router-link>-->
 </div>
 <div class="right" >
   <router-view></router-view>
@@ -30,7 +30,7 @@ export default {
   display: flex;
   flex-flow: column;
   border-right: #d3c4c4 1px solid;
-  width: 160px;
+  width: 180px;
   overflow: scroll;
   float: left;
   margin-top: 0;
@@ -40,7 +40,7 @@ export default {
 }
 .left>*{
   height: 40px;
-  width: 150px;
+  width: 170px;
   padding: 0;
   border-left: 5px;
   display: flex;

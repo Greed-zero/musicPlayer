@@ -7,6 +7,7 @@
     <router-link to="/findMusic/rank">排行榜</router-link>
     <router-link to="/findMusic/singer">歌手</router-link>
     <router-link to="/findMusic/newMusic">最新音乐</router-link>
+    <div class="block">sddddddddddddddddddddddddddddddddddddddddddddsssssssssssssddddd</div>
   </div>
   <router-view></router-view>
 </div>
@@ -29,10 +30,11 @@ export default {
   justify-content: left;
   margin-top: 15px;
   margin-left: 15px;
+  width: 100%;
 }
 .nav>*{
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
   text-decoration:blink;
   color: black;
   display: flex;
@@ -44,5 +46,11 @@ export default {
   font-size: large;
   border-bottom: red 4px solid;
   display: block;
+}
+.block{
+  opacity: 0;
+}
+router-view{
+  width: 100%;
 }
 </style>
