@@ -2,7 +2,7 @@
 <div class="home">
 <div class="left" >
   <router-link to="/findMusic">&ensp;发现音乐</router-link>
-  <router-link to="/video">&ensp;视频</router-link>
+  <router-link to="/videos">&ensp;视频</router-link>
 <!--  <router-link>&ensp;关注</router-link>-->
 <!--  <router-link>&ensp;直播</router-link>-->
 <!--  <router-link>&ensp;私人FM</router-link>-->
@@ -34,9 +34,13 @@ export default {
   overflow: scroll;
   float: left;
   margin-top: 0;
+  min-width: 180px;
+  position:fixed;
 }
 .right{
   overflow: scroll;
+  position:relative;
+  left: 200px;
 }
 .left>*{
   height: 40px;

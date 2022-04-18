@@ -24,6 +24,8 @@ export default {
     home,
     top,
     play
+  },
+  mounted(){
   }
 }
 </script>

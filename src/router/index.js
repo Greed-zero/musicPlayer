@@ -1,5 +1,5 @@
 import VueRouter from "vue-router";
-import video from "@/views/mv/video";
+import videos from "@/views/mv/videos"
 import findMusic from "@/views/findMusic/findMusic";
 import recommend from "@/views/findMusic/recommend";
 import list from "@/views/findMusic/list";
@@ -38,13 +38,14 @@ const router =new VueRouter({
                 {
                     path:'newMusic',
                     component:newMusic
-                }
+                },
             ]
         },
         {
-            path:'/video',
-            component:video,
-        }
+            path:'/videos',
+            component:videos,
+        },
+
     ]
 
 })

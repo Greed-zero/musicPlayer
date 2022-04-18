@@ -1,22 +1,17 @@
 <template>
-<div class="main">
-  <div class="nav">
-    <router-link to="/findMusic/recommend">个性推荐</router-link>
-    <router-link to="/findMusic/customize">专属定制</router-link>
-    <router-link to="/findMusic/list">歌单</router-link>
-    <router-link to="/findMusic/rank">排行榜</router-link>
-    <router-link to="/findMusic/singer">歌手</router-link>
-    <router-link to="/findMusic/newMusic">最新音乐</router-link>
+  <div class="main">
+    <div class="nav">
+      <router-link to="/findMusic/recommend">个性推荐</router-link>
+      <router-link to="/findMusic/customize">专属定制</router-link>
+      <div class="block">sddddddddddddddddddddddddddddddddddddddddddddsssssssssssssddddd</div>
+    </div>
+    <router-view></router-view>
   </div>
-  <router-view>
-    <el-skeleton />
-  </router-view>
-</div>
 </template>
 
 <script>
 export default {
-  name: "findMusic"
+  name: "videos"
 }
 </script>
 
