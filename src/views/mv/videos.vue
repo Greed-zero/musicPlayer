@@ -1,8 +1,9 @@
 <template>
   <div class="main">
     <div class="nav">
-      <router-link to="/findMusic/recommend">个性推荐</router-link>
-      <router-link to="/findMusic/customize">专属定制</router-link>
+      <div>我是视频的内容</div>
+      <!-- <router-link to="/findMusic/recommend">个性推荐</router-link>
+      <router-link to="/findMusic/customize">专属定制</router-link> -->
       <div class="block">sddddddddddddddddddddddddddddddddddddddddddddsssssssssssssddddd</div>
     </div>
     <router-view></router-view>

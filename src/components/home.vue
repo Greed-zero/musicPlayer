@@ -2,8 +2,9 @@
 <div class="home">
 <div class="left" >
   <router-link to="/findMusic">&ensp;发现音乐</router-link>
+  <router-link to="/dj">&ensp;播客</router-link>
   <router-link to="/videos">&ensp;视频</router-link>
-<!--  <router-link>&ensp;关注</router-link>-->
+ <router-link to="/attention">&ensp;关注</router-link>
 <!--  <router-link>&ensp;直播</router-link>-->
 <!--  <router-link>&ensp;私人FM</router-link>-->
 <!--  <router-link>&ensp;我的音乐</router-link>-->

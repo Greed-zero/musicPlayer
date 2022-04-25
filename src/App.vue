@@ -7,9 +7,9 @@
     <el-main>
       <home></home>
     </el-main>
-    <el-footer>
-      <play></play>
-    </el-footer>
+    <div class="bottom"><el-footer>
+      <play ></play>
+    </el-footer></div>
     </el-container>
   </div>
 </template>
@@ -79,5 +79,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+}
+.bottom{
+  height: 60px;
 }
 </style>

@@ -7,7 +7,7 @@
       </el-carousel-item>
     </el-carousel>
   </div>
-  <div class="title1">推荐歌单></div>
+  <router-link to="/findMusic/list" class="title1">推荐歌单></router-link>
   <div class="items">
     <div class="item" v-for="(item,index) in musicList" :key="index">
       <div class="image-wrap">
@@ -51,7 +51,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="less"  scoped>
 .recommend{
   display: flex;
   flex-flow: column;
@@ -65,13 +65,32 @@ export default {
   max-width: 1300px;
 }
 .el-carousel /deep/ .el-carousel__container {
-  height: 160px;
-  width: 800px;
-  margin-top: 30px;
+  height: 220px;
+  width: 1000px;
+  margin-top: 50px;
 }
+ /deep/.el-carousel__indicators--horizontal {
+ 
+        .el-carousel__indicator--horizontal button {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+ 
+        .el-carousel__indicator--horizontal.is-active button {
+            width: 24px;
+            height: 8px;
+            background-color: red;
+            opacity: 0.5;
+            border-radius: 10px;
+        }
+    }
+
 img{
   border-radius: 8px;
-  width: 400px;
+  width: 500px;
+  height: 200px;
 }
 .title1{
   font-weight:bold;
@@ -79,6 +98,8 @@ img{
   display: flex;
   margin-right: auto;
   margin-left: 30px;
+  color: black;
+  text-decoration: blink;
 }
 .items{
   flex-flow: row wrap;
@@ -92,7 +113,7 @@ img{
 }
 .image-wrap>img{
   width: 200px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 p{
   -webkit-line-clamp: 2;
@@ -100,5 +121,9 @@ p{
   width: 200px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+}
+.router-link-active{
+  background-color: #f5f5f6;
+  font-weight:bold;
 }
 </style>

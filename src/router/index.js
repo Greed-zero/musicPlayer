@@ -7,13 +7,22 @@ import customize from "@/views/findMusic/customize";
 import rank from "@/views/findMusic/rank";
 import singer from "@/views/findMusic/singer";
 import newMusic from "@/views/findMusic/newMusic";
-
+import musicList from "@/views/findMusic/musicList"
+import highquality from "@/views/findMusic/highquality"
+import dj from "@/views/dj/dj"
+import attention from "@/views/attention/attention";
+import listOfMusic from "@/views/listOfMusic/listOfMusic";
 //创建一个路由器
 const router =new VueRouter({
     routes:[
         {
+            path:'/',
+            redirect:'/findMusic'
+        },
+        {
             path:'/findMusic',
             component:findMusic,
+            redirect:'/findMusic/recommend',
             children:[
                 {
                     path:'recommend',
@@ -21,7 +30,18 @@ const router =new VueRouter({
                 },
                 {
                     path:'list',
-                    component:list
+                    component:list,
+                    redirect:'/findMusic/list/musicList',
+                    children:[
+                        {
+                            path:'musicList',
+                            component:musicList
+                        },
+                        {
+                            path:'highquality',
+                            component:highquality
+                        }
+                    ]
                 },
                 {
                     path:'customize',
@@ -43,8 +63,20 @@ const router =new VueRouter({
         },
         {
             path:'/videos',
-            component:videos,
+            component:videos
         },
+        {
+            path:'/dj',
+            component:dj,
+        },
+        {
+            path:'/attention',
+            component:attention
+        },
+        {
+            path:'/listOfMusic',
+            component:listOfMusic
+        }
 
     ]
 
