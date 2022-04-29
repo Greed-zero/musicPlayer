@@ -5,8 +5,8 @@
     </div>
   <div class="title">网易云音乐</div>
   <div class="but">
-    <i class="el-icon-arrow-left"></i>
-    <i class="el-icon-arrow-right"></i>
+    <i class="el-icon-arrow-left" @click="goBack"></i>
+    <i class="el-icon-arrow-right" @click="goBackBack"></i>
   </div>
   <div class="box" >
     <i class="el-icon-search"></i>
@@ -31,7 +31,7 @@
         width="30%"
         :append-to-body="true"
         :close-on-click-modal="false"
-    > 
+    >
     <el-form label-width="80px">
       <el-form-item label="手机号">
     <el-input v-model="user.phone"></el-input>
@@ -96,6 +96,12 @@ export default {
     )
       }).catch(()=>{})
 	},
+    goBack(){
+      this.$router.go(-1)
+    },
+    goBackBack(){
+      this.$router.go(1)
+    },
 },
 }
 </script>
@@ -136,6 +142,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .search{
   width: 160px;

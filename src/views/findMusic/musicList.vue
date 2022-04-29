@@ -64,10 +64,8 @@ export default {
         gotoList(){
             this.$router.push({
                 path:'/findMusic/list/highquality',
-                query:{
-                    typename: this.typename
-                }
             })
+            this.$store.commit('setTypename', this.typename)
         },
         handlelist(){
             this.isShow = !this.isShow
@@ -258,7 +256,7 @@ img{
 }
 .subs{
     display: flex;
-    flex: wrap row ;
+    flex-flow: wrap row ;
     max-width: 100%;
     flex: 1 1 20%;
 }

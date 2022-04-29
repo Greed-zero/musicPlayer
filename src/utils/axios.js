@@ -12,7 +12,7 @@ export function getBanner() {
     )
     return res
 }
-
+// export function 
 // export function getBanner(banners) {
 //     axios({
 //         url:'http://localhost:3000/banner',

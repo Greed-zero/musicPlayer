@@ -12,6 +12,10 @@ import highquality from "@/views/findMusic/highquality"
 import dj from "@/views/dj/dj"
 import attention from "@/views/attention/attention";
 import listOfMusic from "@/views/listOfMusic/listOfMusic";
+import subscribed from "@/views/listOfMusic/subscribed"
+import commentOfmusic from "@/views/listOfMusic/commentOfmusic"
+import muscis from "@/views/listOfMusic/muscis";
+
 //创建一个路由器
 const router =new VueRouter({
     routes:[
@@ -75,7 +79,22 @@ const router =new VueRouter({
         },
         {
             path:'/listOfMusic',
-            component:listOfMusic
+            component:listOfMusic,
+            redirect:'/listOfMusic/muscis',
+            children:[
+                {
+                    path:'muscis',
+                    component:muscis,
+                },
+                {
+                    path:'subscribed',
+                    component:subscribed,
+                },
+                {
+                    path:'commentOfmusic',
+                    component:commentOfmusic,
+                }
+            ]
         }
 
     ]

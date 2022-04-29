@@ -10,7 +10,7 @@
             <div class="image-wrap">
                <img  :src="item.coverImgUrl" @click="gotoListOfMusic(`${item.id}`)">
                <div class="musicTitle">
-                 <div class="title">{{item.name}}</div>
+                 <div class="title" @click="gotoListOfMusic(`${item.id}`)">{{item.name}}</div>
                  <div class="user">by   userid</div>
                </div>
             </div>
@@ -30,15 +30,14 @@ export default {
     }
   },
   created(){
-    
+
   },
   mounted(){
-    console.log(this.$route)
-    this.typename =this.$route.query.typename
-    this.reflashList()
+    this.typename =this.$store.state.typename
+    this.renewList()
   },
   methods:{
-    reflashList(){
+    renewList(){
             axios({
         url:'http://localhost:3000/top/playlist/highquality',
         method:'get',
@@ -53,15 +52,43 @@ export default {
             err => console.log(err.message)
         )
         },
-        gotoListOfMusic(listId){
-          this.$router.push(
-            {
-              path:"/listOfMusic",
-              query:{
-                listId
-              }
-              })
-        }
+    gotoListOfMusic(listId){
+      this.$router.push(
+        {
+          path:"/listOfMusic",
+          })
+          this.$store.commit('setListId', listId)
+          console.log("this.$store.state.listId:",this.$store.state.listId)
+          this.$store.commit('setTag', '精品歌单')
+          console.log("this.$store.state.tag:",this.$store.state.tag)
+    },
+    reflash(){
+    let playlist =  this.$store.state.playlist
+    let res = []
+    for(let music of playlist.trackIds){
+      res.push(music.id)
+    }
+    res = res.join(",")
+    // console.log(res)
+    axios({
+      url:'http://localhost:3000/song/detail',
+      method:'get',
+      params:{
+        ids:res
+      }
+    }).then(
+      res =>{
+        this.$store.commit('setSongs',res.data.songs)
+        this.songs = this.$store.state.songs
+        // console.log('this.songs:',this.songs)
+        console.log('this.$store.state.songs:',this.$store.state.songs)
+      },
+      err=>{
+        console.log(err.message)
+      }
+    )
+  }
+
   }
 }
 </script>
@@ -80,7 +107,7 @@ export default {
 .top-left{
   font-weight: bolder;
   font-size: large;
-  
+
 }
 .top-right{
 border: 1px solid rgb(172, 167, 167);
@@ -95,6 +122,7 @@ align-items: center;
 img{
   width: 150px;
   border-radius: 3px;
+  cursor: pointer;
 }
 .list{
   margin-left: -40px;
@@ -108,7 +136,7 @@ img{
   justify-content: space-between
 }
 .items::after{
-  content: ""; 
+  content: "";
   width:422px;
 }
 .item{
@@ -125,14 +153,16 @@ img{
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
   /* font-size: small; */
-  
+  cursor: pointer;
 }
 .musicTitle{
   margin-top: 30px;
   margin-left: 5px;
+  
 }
 .user{
   font-size: small;
   color: rgb(172, 167, 167);
+  cursor: pointer;
 }
 </style>
