@@ -9,7 +9,7 @@
         <th>专辑</th>
         <th>时间</th>
       </tr>
-      <tr v-for="(song,index) in this.songs" :key="index"  :style="handleColor(index)">
+      <tr v-for="(song,index) in this.$store.state.songs" :key="index"  :style="handleColor(index)">
         <td style="width: 60px;" class="left" >{{index+1}}</td>
         <td style="width: 40px;" >喜欢</td>
         <td style="width: 400px;" :title="song.name">{{song.name}}</td>
@@ -24,21 +24,29 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   data(){
     return{
       playlist:'',
-      songs:'',
+      isOk : true,
     }
   },
   mounted(){
-    this.reflash()
+  // this.reflash()
+  // this.$nextTick(this.reflash())
+  },
+  beforeCreate(){
+  
   },
   created(){
+  
   },
   beforeUpdate(){
-  this.reflash()
+      // this.$nextTick(this.reflash())
+  },
+  beforeDestroy(){
+    this.isOk = true
   },
   methods:{
     handelMessage(key){
@@ -52,32 +60,7 @@ export default {
       }
     }
   },
-   reflash(){
-    let playlist =  this.$store.state.playlist
-    let res = []
-    for(let music of playlist.trackIds){
-      res.push(music.id)
-    }
-    res = res.join(",")
-    // console.log(res)
-   axios({
-      url:'http://localhost:3000/song/detail',
-      method:'get',
-      params:{
-        ids:res
-      }
-    }).then(
-      res =>{
-        this.$store.commit('setSongs',res.data.songs)
-        this.songs = this.$store.state.songs
-        // console.log('this.songs:',this.songs)
-        // console.log('this.$store.state.songs:',this.$store.state.songs)
-      },
-      err=>{
-        console.log(err.message)
-      }
-    )
-  },
+   
   relodeTable(){
     this.isRelode = false
     this.$nextTick(()=>{
