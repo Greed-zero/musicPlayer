@@ -53,14 +53,15 @@ export default {
         )
         },
     gotoListOfMusic(listId){
+      this.$store.commit('setListId', listId)
+          console.log("this.$store.state.listId:",this.$store.state.listId)
+          this.$store.commit('setTag', '精品歌单')
+          console.log("this.$store.state.tag:",this.$store.state.tag)
       this.$router.push(
         {
           path:"/listOfMusic",
           })
-          this.$store.commit('setListId', listId)
-          console.log("this.$store.state.listId:",this.$store.state.listId)
-          this.$store.commit('setTag', '精品歌单')
-          console.log("this.$store.state.tag:",this.$store.state.tag)
+          
     },
     reflash(){
     let playlist =  this.$store.state.playlist

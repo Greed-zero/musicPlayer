@@ -58,32 +58,6 @@ export default {
         return l
         }else return ''
   },
-   reflash(){
-    let playlist =  this.$store.state.playlist
-    let res = []
-    for(let music of playlist.trackIds){
-      res.push(music.id)
-    }
-    res = res.join(",")
-    console.log(res)
-    axios({
-      url:'http://localhost:3000/song/detail',
-      method:'get',
-      params:{
-        ids:res
-      }
-    }).then(
-      res =>{
-        this.$store.commit('setSongs',res.data.songs);
-        this.songs = res.data.songs
-        console.log(res.data.songs)
-        console.log('this.state.songs:',this.state.songs)
-      },
-      err=>{
-        console.log(err.message)
-      }
-    )
-  }
   },
   computed:{
     res(){
@@ -99,8 +73,8 @@ export default {
   created(){
     this.listId = this.$store.state.listId
     this.type = this.$store.state.tag
-    console.log("this.$store.state.tag:",this.$store.state.tag)
-    axios({
+    // console.log("this.$store.state.tag:",this.$store.state.tag)
+     axios({
       method:'get',
       url:'http://localhost:3000/playlist/detail',
       params:{
@@ -108,18 +82,43 @@ export default {
       }
     }).then(
       res => {
-        console.log(res.data)
         this.playlist = res.data.playlist
-        console.log('this.playlist:',this.playlist)
         this.$store.commit('setPlaylist', res.data.playlist)
+        console.log('0.this.$store.state.playlist.id:',this.$store.state.playlist.id)
+        this.$nextTick(()=>{
+    console.log('1:this.$store.state.playlist.id',this.$store.state.playlist.id)
+    let res = []
+    for(let music of this.$store.state.playlist.trackIds){
+      res.push(music.id)
+    }
+    res = res.join(",")
+  axios({
+      url:'http://localhost:3000/song/detail',
+      method:'get',
+      params:{
+        ids:res
+      }
+    }).then(
+      res =>{
+        this.$store.commit('setSongs',res.data.songs)
+        console.log(this.$store.state.songs)
+      },
+      err=>{
+        console.log(err.message)
+      }
+    )
+  },
+    )
       },
       err =>{
         console.log(err.message)
       }
     )
+   
+     
   },
   mounted(){
-    
+     
   },
 
 }
