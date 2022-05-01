@@ -9,15 +9,19 @@
         <th>专辑</th>
         <th>时间</th>
       </tr>
-      <tr v-for="(song,index) in this.$store.state.songs" :key="index"  :style="handleColor(index)">
-        <td style="width: 60px;" class="left" >{{index+1}}</td>
+      <tr 
+      v-for="(song,index) in this.$store.state.songs" 
+      :key="index"  
+      :style="handleColor(index)"
+      >
+        <td style="width: 60px;" class="left" >{{handleIndex(index+1)}}</td>
         <td style="width: 40px;" >喜欢</td>
         <td style="width: 400px;" :title="song.name">{{song.name}}</td>
         <td style="width: 250px;" class="singers" >
           <div v-for="(ar,index) in song.ar" :key="index"  class="singer">{{ar.name}}</div>
           </td>
         <td style="width: 250px;" :title="song.al.name">{{handelMessage(song.al.name)}}</td>
-        <td style="width: 100px;" :title="1"></td>
+        <td style="width: 100px;" :title="1">{{handleTime(song.dt)}}</td>
       </tr>
     </table>
   </div>
@@ -29,24 +33,19 @@ export default {
   data(){
     return{
       playlist:'',
-      isOk : true,
+      // active:false,//控制表格的hover
     }
   },
   mounted(){
-  // this.reflash()
-  // this.$nextTick(this.reflash())
   },
   beforeCreate(){
   
   },
   created(){
-  
   },
   beforeUpdate(){
-      // this.$nextTick(this.reflash())
   },
   beforeDestroy(){
-    this.isOk = true
   },
   methods:{
     handelMessage(key){
@@ -55,19 +54,37 @@ export default {
     },
     handleColor(index){
     if(index%2 === 0){
-      return{
+      // if(!this.active){
+        return{
         background:'#f9f9f9'
       }
+      // }else return{
+      //    background:'#edecec'
+      // }
     }
-  },
-   
-  relodeTable(){
-    this.isRelode = false
-    this.$nextTick(()=>{
-      this.isRelode = true
-    })
-  }
-  },
+    },
+    handleTime(dt){
+      dt = Math.floor(dt/1000)
+      let min = Math.floor(dt/60) 
+      if(min<10) min = '0'+ min
+      let sec = dt%60
+      if(sec<10) sec = '0'+ sec
+      let res = min+':'+sec
+      return res
+    },
+    relodeTable(){
+      this.isRelode = false
+      this.$nextTick(()=>{
+        this.isRelode = true
+      })
+    },
+    handleIndex(index){
+      if(index<10){
+        index='0'+index
+      }
+      return index
+    }
+    },
   
 }
 </script>
@@ -97,8 +114,8 @@ td{
   color: rgb(131, 134, 134);
   /* background: ; */
 }
-td:hover{
-  background:#edecec;
+tr:nth-child(n+2):hover{
+  background:#edecec!important;
 }
 .left{
   display: flex;

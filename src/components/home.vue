@@ -1,6 +1,6 @@
 <template>
 <div class="home">
-<div class="left" >
+<div class="left" v-if="this.$store.state.isShow">
   <router-link to="/findMusic">&ensp;发现音乐</router-link>
   <router-link to="/dj">&ensp;播客</router-link>
   <router-link to="/videos">&ensp;视频</router-link>

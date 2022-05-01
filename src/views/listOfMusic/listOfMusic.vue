@@ -11,7 +11,7 @@
         </div>
         <div class="creater">who</div>
         <div class="but">
-          <div class="but1">播放全部</div>
+          <div class="but1" @click="visible=true">播放全部</div>
           <div class="but2">收藏({{res(playlist.subscribedCount)}})</div>
           <div class="but3">分享({{res(playlist.shareCount)}})</div>
           <div class="but4">下载全部</div>
@@ -30,6 +30,17 @@
     <router-link to="/listOfMusic/commentOfmusic">评论()</router-link>
     <router-link to="/listOfMusic/subscribed">收藏者</router-link>
   </div>
+  <el-dialog
+  title="替换播放列表"
+  :visible.sync="visible"
+  width="30%"
+  >
+  <span>“播放全部”将会替换当前的播放列表,是否继续？</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button class="continue" @click="getUrl(0)" style="background-color:red;color:white">继续</el-button>
+    <el-button type="primary" @click="visible = false" >取消</el-button>
+  </span>
+</el-dialog>
   <router-view></router-view>
   </div>
 </template>
@@ -44,6 +55,8 @@ export default {
       type:'',     //精品歌单 与 歌单
       title:'', //小标题
       isShow:false,//控制描述的展开与收起
+      urls:[],
+      visible:false,
     }
   },
   methods:{
@@ -58,6 +71,12 @@ export default {
         return l
         }else return ''
   },
+  getUrl(key){
+      this.visible = false
+      this.$store.commit('handleMusciKey',key)
+      this.$store.commit('setUrls',this.urls)
+      console.log('this.$store.state.urls:',this.$store.state.urls)
+  }
   },
   computed:{
     res(){
@@ -84,13 +103,11 @@ export default {
       res => {
         this.playlist = res.data.playlist
         this.$store.commit('setPlaylist', res.data.playlist)
-        console.log('0.this.$store.state.playlist.id:',this.$store.state.playlist.id)
         this.$nextTick(()=>{
-    console.log('1:this.$store.state.playlist.id',this.$store.state.playlist.id)
-    let res = []
-    for(let music of this.$store.state.playlist.trackIds){
-      res.push(music.id)
-    }
+        let res = []
+        for(let music of this.$store.state.playlist.trackIds){
+          res.push(music.id)
+        }
     res = res.join(",")
   axios({
       url:'http://localhost:3000/song/detail',
@@ -101,12 +118,29 @@ export default {
     }).then(
       res =>{
         this.$store.commit('setSongs',res.data.songs)
-        console.log(this.$store.state.songs)
+        console.log('this.$store.state.songs:',this.$store.state.songs)
       },
       err=>{
         console.log(err.message)
       }
     )
+  axios({
+    url:'http://localhost:3000/song/url',
+    method:'get',
+    params:{
+      id:res
+    }
+  }).then(
+    res=>{
+      this.urls = res.data.data
+      console.log('this.urls:',this.urls)
+      // this.$store.commit('setUrls',res.data.data)
+      // console.log('this.$store.state.urls:',this.$store.state.urls)
+    },
+    err=>{
+        console.log(err.message)
+      }
+  )
   },
     )
       },

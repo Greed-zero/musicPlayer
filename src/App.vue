@@ -23,7 +23,8 @@ export default {
   components: {
     home,
     top,
-    play
+    play,
+   
   },
   mounted(){
   }

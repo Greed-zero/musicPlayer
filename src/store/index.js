@@ -39,7 +39,23 @@ const mutations = {
     },
     setSongs(state,songs){
         state.songs= songs
-    }
+    },
+    setUrls(state,urls){
+        state.urls= urls
+    },
+    handleIsShow(state){
+        state.isShow = !state.isShow
+    },
+    handleMusciKey(state,key){
+        state.musciKey = key
+    },
+    autoMusciKey(state){
+        if (state.musciKey <state.urls.length - 1) {
+			state.musciKey++
+		} else {
+			state.musciKey = 0
+		}
+	}
 }
 
 const state = {
@@ -52,6 +68,9 @@ const state = {
     listId:'',
     Type:'',
     songs:[],
+    isShow:true,
+    urls:[],
+    musciKey:0,
 }
 
 const store = new Vuex.Store({
