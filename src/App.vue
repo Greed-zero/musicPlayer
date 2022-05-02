@@ -44,7 +44,7 @@ export default {
   width: 100%;
 }
 .el-footer {
-    background-color: #B3C0D1;
+    background-color: white;
     color: #333;
     line-height: 60px;
     display: flex;
@@ -55,9 +55,10 @@ export default {
     left: 0;
     bottom: 0;
     min-height: 72px;
+    border-top: #d5d5dab2 solid 1px;
   }
 .el-main{
-  background-color: #ffffff;
+  background-color: #ffffffd0;
   height: 100%;
   position: relative;
   top: 0;

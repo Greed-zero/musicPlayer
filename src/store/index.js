@@ -46,14 +46,14 @@ const mutations = {
     handleIsShow(state){
         state.isShow = !state.isShow
     },
-    handleMusciKey(state,key){
-        state.musciKey = key
+    handlemusicKey(state,key){
+        state.musicKey = key
     },
-    autoMusciKey(state){
-        if (state.musciKey <state.urls.length - 1) {
-			state.musciKey++
+    automusicKey(state){
+        if (state.musicKey <state.urls.length - 1) {
+			state.musicKey++
 		} else {
-			state.musciKey = 0
+			state.musicKey = 0
 		}
 	}
 }
@@ -62,7 +62,7 @@ const state = {
     userId:'478150477',
     nickname:"钟表不代表时间",
     avatarUrl:"http://p4.music.126.net/WITdh08QoItXO6DDaNdCsQ==/18636722092710063.jpg",
-    musci:[],
+    music:[],
     playlist:[],
     typename:'',
     listId:'',
@@ -70,7 +70,7 @@ const state = {
     songs:[],
     isShow:true,
     urls:[],
-    musciKey:0,
+    musicKey:0,
 }
 
 const store = new Vuex.Store({
