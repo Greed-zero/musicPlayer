@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "7594152",
+      "name": "24gf-pause2",
+      "font_class": "icon-zanting",
+      "unicode": "ea81",
+      "unicode_decimal": 60033
+    },
+    {
       "icon_id": "315369",
       "name": "cg-发动态",
       "font_class": "cgfadongtai",
@@ -25,13 +32,6 @@
       "font_class": "fenxiang",
       "unicode": "e60f",
       "unicode_decimal": 58895
-    },
-    {
-      "icon_id": "2076214",
-      "name": "暂停",
-      "font_class": "zanting",
-      "unicode": "e87a",
-      "unicode_decimal": 59514
     },
     {
       "icon_id": "2076218",

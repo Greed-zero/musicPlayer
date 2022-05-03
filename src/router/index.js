@@ -14,7 +14,7 @@ import attention from "@/views/attention/attention";
 import listOfMusic from "@/views/listOfMusic/listOfMusic";
 import subscribed from "@/views/listOfMusic/subscribed"
 import commentOfmusic from "@/views/listOfMusic/commentOfmusic"
-import muscis from "@/views/listOfMusic/muscis";
+import musics from "@/views/listOfMusic/musics";
 
 //创建一个路由器
 const router =new VueRouter({
@@ -80,11 +80,11 @@ const router =new VueRouter({
         {
             path:'/listOfMusic',
             component:listOfMusic,
-            redirect:'/listOfMusic/muscis',
+            redirect:'/listOfMusic/musics',
             children:[
                 {
-                    path:'muscis',
-                    component:muscis,
+                    path:'musics',
+                    component:musics,
                 },
                 {
                     path:'subscribed',

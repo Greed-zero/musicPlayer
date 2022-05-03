@@ -26,7 +26,7 @@
       </div>
     </div>
   <div class="nav">
-    <router-link :to="{path:'/listOfMusic/muscis'}"   :playlist ='playlist' >歌曲列表</router-link>
+    <router-link :to="{path:'/listOfMusic/musics'}"   :playlist ='playlist' >歌曲列表</router-link>
     <router-link to="/listOfMusic/commentOfmusic">评论()</router-link>
     <router-link to="/listOfMusic/subscribed">收藏者</router-link>
   </div>
@@ -57,6 +57,7 @@ export default {
       isShow:false,//控制描述的展开与收起
       urls:[],
       visible:false,
+      songs:'',
     }
   },
   methods:{
@@ -73,9 +74,11 @@ export default {
   },
   getUrl(key){
       this.visible = false
-      this.$store.commit('handleMusciKey',key)
+      this.$store.commit('handlemusicKey',key)
       this.$store.commit('setUrls',this.urls)
       console.log('this.$store.state.urls:',this.$store.state.urls)
+      this.$store.commit('setSongs',this.$store.state.songlist)
+        console.log('this.$store.state.songs:',this.$store.state.songs)
   }
   },
   computed:{
@@ -105,9 +108,32 @@ export default {
         this.$store.commit('setPlaylist', res.data.playlist)
         this.$nextTick(()=>{
         let res = []
+        this.urls = []
         for(let music of this.$store.state.playlist.trackIds){
           res.push(music.id)
         }
+    // console.log('res:',res)
+    for(let id of res){
+      // console.log('el:',id)
+       axios({
+      url:'http://localhost:3000/song/url',
+      method:'get',
+      params:{
+        id
+      }
+    }).then(
+      res =>{
+        this.urls.push(res.data.data[0].url)
+        // console.log('this.urls:',this.urls)
+        // this.$store.commit('setSongs',res.data.songs)
+        // console.log('this.$store.state.songs:',this.$store.state.songs)
+      },
+      err=>{
+        console.log(err.message)
+      }
+    )
+    }
+    console.log('this.urls:',this.urls)
     res = res.join(",")
   axios({
       url:'http://localhost:3000/song/detail',
@@ -117,30 +143,31 @@ export default {
       }
     }).then(
       res =>{
-        this.$store.commit('setSongs',res.data.songs)
-        console.log('this.$store.state.songs:',this.$store.state.songs)
+        // this.songs = res.data.songs
+        this.$store.commit('setSonglist',res.data.songs)
+        // console.log('this.$store.state.songs:',this.$store.state.songs)
       },
       err=>{
         console.log(err.message)
       }
     )
-  axios({
-    url:'http://localhost:3000/song/url',
-    method:'get',
-    params:{
-      id:res
-    }
-  }).then(
-    res=>{
-      this.urls = res.data.data
-      console.log('this.urls:',this.urls)
-      // this.$store.commit('setUrls',res.data.data)
-      // console.log('this.$store.state.urls:',this.$store.state.urls)
-    },
-    err=>{
-        console.log(err.message)
-      }
-  )
+  // axios({
+  //   url:'http://localhost:3000/song/url',
+  //   method:'get',
+  //   params:{
+  //     id:res
+  //   }
+  // }).then(
+  //   res=>{
+  //     this.urls = res.data.data
+  //     console.log('this.urls:',this.urls)
+  //     // this.$store.commit('setUrls',res.data.data)
+  //     // console.log('this.$store.state.urls:',this.$store.state.urls)
+  //   },
+  //   err=>{
+  //       console.log(err.message)
+  //     }
+  // )
   },
     )
       },

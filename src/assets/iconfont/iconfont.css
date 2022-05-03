@@ -1,11 +1,11 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3316875 */
-  src: url('iconfont.eot?t=1651395527906'); /* IE9 */
-  src: url('iconfont.eot?t=1651395527906#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1651395527906') format('woff2'),
-       url('iconfont.woff?t=1651395527906') format('woff'),
-       url('iconfont.ttf?t=1651395527906') format('truetype'),
-       url('iconfont.svg?t=1651395527906#iconfont') format('svg');
+  src: url('iconfont.eot?t=1651500223096'); /* IE9 */
+  src: url('iconfont.eot?t=1651500223096#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1651500223096') format('woff2'),
+       url('iconfont.woff?t=1651500223096') format('woff'),
+       url('iconfont.ttf?t=1651500223096') format('truetype'),
+       url('iconfont.svg?t=1651500223096#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,6 +14,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon-zanting:before {
+  content: "\ea81";
 }
 
 .icon-cgfadongtai:before {
@@ -26,10 +30,6 @@
 
 .icon-fenxiang:before {
   content: "\e60f";
-}
-
-.icon-zanting:before {
-  content: "\e87a";
 }
 
 .icon-bofang:before {

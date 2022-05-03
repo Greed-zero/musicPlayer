@@ -49,6 +49,9 @@ const mutations = {
     handlemusicKey(state,key){
         state.musicKey = key
     },
+    setSonglist(state,key){
+        state.songlist = key
+    },
     automusicKey(state){
         if (state.musicKey <state.urls.length - 1) {
 			state.musicKey++
@@ -68,6 +71,7 @@ const state = {
     listId:'',
     Type:'',
     songs:[],
+    songlist:[],
     isShow:true,
     urls:[],
     musicKey:0,

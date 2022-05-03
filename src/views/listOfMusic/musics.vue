@@ -10,7 +10,7 @@
         <th>时间</th>
       </tr>
       <tr 
-      v-for="(song,index) in this.$store.state.songs" 
+      v-for="(song,index) in this.$store.state.songlist" 
       :key="index"  
       :style="handleColor(index)"
       >
